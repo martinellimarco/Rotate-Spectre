@@ -15,9 +15,9 @@ from glob import glob
 
 
 # Your device names go here if different.
-TOUCHSCREEN = 'ELAN0732:00 04F3:2493'
+TOUCHSCREEN = 'ELAN22CA:00 04F3:22CA'
 TOUCHPAD    = 'SynPS/2 Synaptics TouchPad'
-PEN         = 'ELAN0732:00 04F3:22E1 Pen Pen (0)'
+PEN         = 'ELAN22CA:00 04F3:22CA Pen Pen (0)'
 
 disable_touchpads = True
 
@@ -56,7 +56,7 @@ STATES = [
 
 def rotate(state):
     s = STATES[state]
-    check_call(['xrandr', '-o', s['rot']])
+    check_call(['xrandr', '--output', 'eDP-1-1', '--rotate', s['rot']])
 
     check_call(['xinput', 'set-prop', TOUCHSCREEN, 'Coordinate Transformation Matrix',] + s['coord'].split())
     
